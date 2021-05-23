@@ -37,20 +37,44 @@ function boxMode() {
     mesh.position.set(0, 0, 0);
     scene.add(mesh);
 }
-boxMode();
+// boxMode();
 
 // bgm
 function bgMusic() {
     let listerner = new THREE.AudioListener();
     let audio = new THREE.Audio(listerner);
     let audioLoader = new THREE.AudioLoader();
-    audioLoader.load('https://luther-1253415427.cos.ap-chengdu.myqcloud.com/streams/%E8%BD%BB%E6%9D%BE%E9%9F%B3%E4%B9%90%20-%20%E9%B8%9F%E8%AF%AD%E8%8A%B1%E9%A6%99(%E8%BD%BB%E9%9F%B3%E4%B9%90).mp3', audioClip => {
+    audioLoader.load('res/audio/tea.mp3', audioClip => {
         audio.setBuffer(audioClip);
         audio.setLoop(true);
         audio.play();
     });
 }
 // bgMusic();
+
+// pano video
+// sphere mode
+function panoVideoMode() {
+    let videoNode = document.createElement('video');
+    videoNode.src="res/video/video01.mp4";
+    // videoNode.load();
+    // videoNode.play();
+    videoNode.autoplay = true;
+    videoNode.loop = true;
+    let videoTexture = new THREE.VideoTexture(videoNode);
+    videoTexture.needsUpdate = true;
+ 
+    var sphere = new THREE.SphereGeometry(10, 10, 10);
+    var mat = new THREE.MeshBasicMaterial({ map: videoTexture, side: THREE.DoubleSide });
+    var mesh = new THREE.Mesh(sphere, mat);
+    mesh.position.set(0, 0, 0);
+    scene.add(mesh);
+}
+panoVideoMode();
+
+
+
+
 // grid
 var liyangground = new THREE.GridHelper(100, 100);
 // scene.add(liyangground);
