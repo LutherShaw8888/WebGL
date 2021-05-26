@@ -55,14 +55,12 @@ function bgMusic() {
 // pano video
 // sphere mode
 function panoVideoMode() {
+    // let videoNode = document.getElementById('video');
     let videoNode = document.createElement('video');
     videoNode.src="res/video/video01.mp4";
-    // videoNode.load();
-    // videoNode.play();
     videoNode.autoplay = true;
     videoNode.loop = true;
     let videoTexture = new THREE.VideoTexture(videoNode);
-    videoTexture.needsUpdate = true;
  
     var sphere = new THREE.SphereGeometry(10, 10, 10);
     var mat = new THREE.MeshBasicMaterial({ map: videoTexture, side: THREE.DoubleSide });
