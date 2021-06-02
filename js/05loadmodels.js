@@ -43,10 +43,10 @@ function onResize() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
-// HemisphereLight
+// Lights
 let hemiLight = new THREE.HemisphereLight(0xffeeb1, 0x080820, 1);
 scene.add(hemiLight);
-scene.add(new THREE.AmbientLight(0xffffff, 0.1));
+scene.add(new THREE.AmbientLight(0xffffff, 1));
 
 let spotLight = new THREE.SpotLight(0xffffff, 0.8);
 spotLight.position.set(0, 50, 0);
@@ -83,25 +83,21 @@ function loadObj() {
 
 // 2.gltf loader
 function loadGLTF() {
-    new THREE.GLTFLoader().load('res/models/phoenix/scene.gltf', gltf => {
+    new THREE.GLTFLoader().load('res/models/island/scene.gltf', gltf => {
         model = gltf.scene.children[0];
-        model.position.set(0, -2, -2);
-        model.scale.multiplyScalar(0.05);
-        // model.material.map=new THREE.MeshLambetMaterial();
-        // model.material=new THREE.MeshBasicMaterial({map:new THREE.TextureLoader().load('res/models/phoenix/textures/MatI_Ride_FengHuang_01a_baseColor.png')});
+        model.position.set(0, 11, -2);
+        model.scale.multiplyScalar(5);
         model.traverse(child => {
             if (child.isMesh) {
                 // console.log(child);
                 child.castShadow = true;
                 child.receiveShadow = true;
-                // n.material.wireframe = true;
-                child.material.emissiveMap = new THREE.TextureLoader().load('res/models/phoenix/textures/MatI_Ride_FengHuang_01a_baseColor.png');
-                if (child.material.map) {
-                    child.material.map.anisotropy = 16;
-                }
+                child.material.map = new THREE.TextureLoader().load('res/models/island/textures/Material_baseColor.png');
+                // console.log(child.material);
+                // child.material.wireframe = true;     
             }
         });
-        // scene.add(model);
+        scene.add(model);
         mixer = new THREE.AnimationMixer(model);
         if (gltf.animations[0]) {
             let animationAction = mixer.clipAction(gltf.animations[0]);
@@ -109,6 +105,7 @@ function loadGLTF() {
         }
     });
 }
+loadGLTF();
 
 // 3.fbx loader + animation loader
 function fbxWithTex() {
@@ -133,24 +130,27 @@ function fbxWithTex() {
         }
     });
 }
+// fbxWithTex();
 
-let fbxTex = 'res/models/breath_of_the_wild/textures/mat_link_baseColor.png';
-new THREE.FBXLoader().load('res/models/breath_of_the_wild/Zelda02.fbx', fbx => {
-    fbx.scale.multiplyScalar(0.02);
-    fbx.position.set(0, 0, 0);
-    fbx.traverse(child => {
-        if (child.isMesh) {
-            // child.material.emissive = new THREE.Color(1, 1, 1);
-            // child.material.emissiveIntensity = 0.25;
-            child.material.map = new THREE.TextureLoader().load(fbxTex);
-            child.castShadow = true;
-            child.receiveShadow = true;
-            // console.log(child);
-        }
+function fbxWithoutTex() {
+    let fbxTex = 'res/models/breath_of_the_wild/textures/mat_link_baseColor.png';
+    new THREE.FBXLoader().load('res/models/breath_of_the_wild/Zelda02.fbx', fbx => {
+        fbx.scale.multiplyScalar(0.02);
+        fbx.position.set(0, 0, 0);
+        fbx.traverse(child => {
+            if (child.isMesh) {
+                // child.material.emissive = new THREE.Color(1, 1, 1);
+                // child.material.emissiveIntensity = 0.25;
+                child.material.map = new THREE.TextureLoader().load(fbxTex);
+                child.castShadow = true;
+                child.receiveShadow = true;
+                // console.log(child);
+            }
+        });
+        scene.add(fbx);
     });
-    scene.add(fbx);
-});
-
+}
+// fbxWithoutTex();
 
 function init() {
     renderer.render(scene, camera);
