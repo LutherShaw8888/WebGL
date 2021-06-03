@@ -29,7 +29,7 @@ orbit.autoRotateSpeed = 0.1;
 
 // stats
 var stats = new Stats();
-stats.setMode(0);
+stats.setMode(2);
 stats.domElement.style.width = '100px';
 stats.domElement.style.height = '100px';
 stats.domElement.style.border = "solid 2px red";
@@ -56,6 +56,14 @@ spotLight.shadow.mapSize.width = 1024 * 4;//影子的清晰度
 spotLight.shadow.mapSize.height = 1024 * 4;
 scene.add(spotLight);
 
+// bgmusic
+let audioListerner = new THREE.AudioListener();
+let audio = new THREE.Audio(audioListerner);
+new THREE.AudioLoader().load("res/audio/windchimes.mp3", audioClip => {
+    audio.setBuffer(audioClip);
+    audio.setLoop(true);
+    audio.play();
+})
 
 clock = new THREE.Clock();
 mixer = null;
