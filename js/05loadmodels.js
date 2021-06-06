@@ -88,6 +88,7 @@ function loadObj() {
         // scene.add(obj);
     });
 }
+// loadObj();
 
 // 2.gltf loader
 function loadGLTF() {
@@ -113,7 +114,7 @@ function loadGLTF() {
         }
     });
 }
-loadGLTF();
+// loadGLTF();
 
 // 3.fbx loader + animation loader
 function fbxWithTex() {
@@ -136,9 +137,12 @@ function fbxWithTex() {
             let animationAction = mixer.clipAction(fbx.animations[0]);
             animationAction.play();
         }
-    });
+    }, onProgress);
+    function onProgress(progress) {
+        console.log('资源已加载：' + Math.floor(progress.loaded / progress.total * 100) + '%');
+    }
 }
-// fbxWithTex();
+fbxWithTex();
 
 function fbxWithoutTex() {
     let fbxTex = 'res/models/breath_of_the_wild/textures/mat_link_baseColor.png';

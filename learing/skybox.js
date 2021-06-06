@@ -34,6 +34,5 @@ function init() {
     renderer.render(scene, camera);
     requestAnimationFrame(init);
     controller.update();
-
 }
 init();
