@@ -1,9 +1,57 @@
-*{
-width: 100%;
-height: 100%;
-box-sizing: border-box;
+* {
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
 }
+
 body {
 	width: 100vw;
 	height: 100vh;
+}
+
+.container {
+	width: 100%;
+	height: 24px;
+	/* border: solid 2px red; */
+}
+
+.prog-txt {
+	position: absolute;
+	height: 22px;
+}
+
+#skill {
+	width: 1500px;
+	height: 22px;
+	position: absolute;
+	line-height: 2em;
+	margin-left: 120px;
+}
+
+.fg-bar {
+	height: 18px;
+	margin-top: 2px;
+	position: absolute;
+	border-radius: 10px;
+}
+
+#bg-frame {
+	-webkit-animation: progress-animation 1s ease-out;
+	background-color: #01f7ff;
+}
+
+@-webkit-keyframes progress-animation {
+	0% {
+		width: 0px;
+	}
+	100% {
+		width: 100%;
+	}
+}
+
+#input {
+	height: 22px;
+	position: absolute;
+	border-radius: 10px;
+	text-align: right;
 }

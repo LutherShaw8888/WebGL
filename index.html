@@ -7,8 +7,6 @@
 	<link rel="icon" href="https://luther-1253415427.cos.ap-chengdu.myqcloud.com/images/ico/Batman.ico">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-
 	<script src="threejs/three.js"></script>
 	<script src="threejs/OrbitControls.js"></script>
 	<script src="threejs/GLTFLoader.js"></script>
@@ -18,8 +16,10 @@
 
 	<script src="threejs/stats.js"></script>
 
+	<script src="threejs/dat.gui.js"></script>
 
-	<link rel="stylesheet" href="css/style.css?v=1.0">
+
+	<link rel="stylesheet" href="css/style.css?ver=1.0">
 </head>
 
 <body>
@@ -30,9 +30,6 @@
 	<!-- <video id="myvideo" src="res/video/video01.mp4" autoplay></video> -->
 
 	<!-- <script src="teaching/03skybox.js"></script> -->
-
-
-
 
 	<!-- <script src="learing/basic.js"></script> -->
 	<!-- <script src="learing/points.js"></script> -->
@@ -50,7 +47,15 @@
 	</video> -->
 	<!-- <script src="js/04skybox.js"></script> -->
 
-	<script src="js/05loadmodels.js?v=1.0"></script>
+	<!-- <script src="js/05loadmodels.js?v=1.0"></script> -->
+	<script src="js/06gui.js?v=1.0"></script>
+	<div class="container">
+		<span class="prog-txt">资源加载进度：</span>
+	<div id="skill">
+		<input id="input" type="text" value="">
+		<span class="fg-bar" id="bg-frame"></span>
+	</div>
+</div>
 </body>
 
 </html>
