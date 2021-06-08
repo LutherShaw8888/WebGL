@@ -118,9 +118,9 @@ function loadGLTF() {
 
 // 3.fbx loader + animation loader
 function fbxWithTex() {
-    new THREE.FBXLoader().load('res/models/fbx/AlitaDance.fbx', fbx => {
+    new THREE.FBXLoader().load('res/models/fbx/AlitaAnis.fbx', fbx => {
         fbx.scale.multiplyScalar(0.02);
-        fbx.position.set(0, 0, 0);
+        fbx.position.set(0, 2, 0);
         fbx.traverse(child => {
             if (child.isMesh) {
                 // child.material.emissive = new THREE.Color(1, 1, 1);
